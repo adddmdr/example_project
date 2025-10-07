@@ -7,9 +7,7 @@ void main() {
 
   registerDependencies();
 
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    runApp(const MainApp());
-  });
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {

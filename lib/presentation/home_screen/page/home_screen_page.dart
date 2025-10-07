@@ -9,11 +9,9 @@ class HomeScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt.get<HomeScreenCubit>()..getEpisodes(),
-        child: HomeScreenContentView(),
-      ),
+    return BlocProvider(
+      create: (_) => getIt.get<HomeScreenCubit>()..getEpisodes(),
+      child: const HomeScreenContentView(),
     );
   }
 }

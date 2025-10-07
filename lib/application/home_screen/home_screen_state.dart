@@ -14,4 +14,6 @@ final class HomeScreenLoadedState extends HomeScreenState {
   });
 }
 
+final class HomeScreenLoadedEmptyState extends HomeScreenState {}
+
 final class HomeScreenErrorState extends HomeScreenState {}
