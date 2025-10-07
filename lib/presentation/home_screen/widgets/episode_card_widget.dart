@@ -61,7 +61,5 @@ class EpisodeCard extends StatelessWidget {
 }
 
 String _episodeArtworkUrl(int episodeId) {
-  const totalCharacters = 826;
-  final normalizedId = (episodeId % totalCharacters) + 1;
-  return 'https://rickandmortyapi.com/api/character/avatar/$normalizedId.jpeg';
+  return 'https://rickandmortyapi.com/api/character/avatar/$episodeId.jpeg';
 }
