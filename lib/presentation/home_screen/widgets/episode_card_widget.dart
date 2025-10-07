@@ -1,3 +1,4 @@
+import 'package:example_project/core/constants/app_spacing.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 import 'package:example_project/presentation/home_screen/widgets/episode_image.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,8 @@ class EpisodeCard extends StatelessWidget {
     final imageUrl = _episodeArtworkUrl(episode.id);
 
     return Padding(
-      padding: isLast ? EdgeInsets.zero : EdgeInsets.only(bottom: 20),
+      padding:
+          isLast ? EdgeInsets.zero : EdgeInsets.only(bottom: AppSpacing.xl),
       child: Card(
         clipBehavior: Clip.antiAlias,
         elevation: 3,
@@ -33,7 +35,7 @@ class EpisodeCard extends StatelessWidget {
             children: [
               EpisodeImage(imageUrl: imageUrl),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(AppSpacing.l),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
