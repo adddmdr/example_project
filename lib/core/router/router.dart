@@ -6,9 +6,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: '/',
     builder: (BuildContext context, GoRouterState state) {
-      return HomeScreenPage(
-        key: ValueKey('home'),
-      );
+      return HomeScreenPage();
     },
   ),
 ]);

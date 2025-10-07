@@ -1,19 +1,43 @@
+import 'package:equatable/equatable.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 
-sealed class HomeScreenState {}
+/// Base state for the home screen flow.
+/// Implements value equality, allowing the UI to rebuild only on meaningful changes.
+sealed class HomeScreenState extends Equatable {
+  const HomeScreenState();
 
-final class HomeScreenInitialState extends HomeScreenState {}
-
-final class HomeScreenLoadingState extends HomeScreenState {}
-
-final class HomeScreenLoadedState extends HomeScreenState {
-  final List<EpisodeModel> episodes;
-
-  HomeScreenLoadedState({
-    required this.episodes,
-  });
+  @override
+  List<Object?> get props => [];
 }
 
-final class HomeScreenLoadedEmptyState extends HomeScreenState {}
+/// Initial idle state emitted before any data load kicks off.
+class HomeScreenInitialState extends HomeScreenState {
+  const HomeScreenInitialState();
+}
 
-final class HomeScreenErrorState extends HomeScreenState {}
+/// State emitted while the episode list is being fetched.
+class HomeScreenLoadingState extends HomeScreenState {
+  const HomeScreenLoadingState();
+}
+
+/// State carrying the successfully fetched list of episodes.
+class HomeScreenLoadedState extends HomeScreenState {
+  const HomeScreenLoadedState({
+    required this.episodes,
+  });
+
+  final List<EpisodeModel> episodes;
+
+  @override
+  List<Object?> get props => [episodes];
+}
+
+/// State emitted when the API call succeeds but returns no episodes.
+class HomeScreenLoadedEmptyState extends HomeScreenState {
+  const HomeScreenLoadedEmptyState();
+}
+
+/// State emitted when fetching episodes fails.
+class HomeScreenErrorState extends HomeScreenState {
+  const HomeScreenErrorState();
+}
