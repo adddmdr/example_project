@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'episode_model.g.dart';
 
+/// Immutable representation of a single episode returned by the API.
 @JsonSerializable()
 class EpisodeModel {
   final int id;

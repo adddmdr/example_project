@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'episodes_model.g.dart';
 
+/// Wraps the `results` when requesting multiple episodes.
 @JsonSerializable()
 class EpisodesModel {
   @JsonKey(name: 'results')

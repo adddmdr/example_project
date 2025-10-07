@@ -1,12 +1,13 @@
 import 'package:example_project/application/home_screen/home_screen_cubit.dart';
 import 'package:example_project/application/home_screen/home_screen_state.dart';
+import 'package:example_project/core/constants/app_spacing.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 import 'package:example_project/presentation/home_screen/widgets/episode_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// Presents the home screen, reacting to [HomeScreenCubit] state changes.
-/// Showslist of episodes when data loads successfully or when loading, are empty or there's an error
+/// Shows a list of episodes when data loads successfully, plus explicit loading, empty, and error states.
 
 class HomeScreenContentView extends StatelessWidget {
   const HomeScreenContentView({super.key});
@@ -50,9 +51,7 @@ class _HomeScreenLoadedView extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () => context.read<HomeScreenCubit>().getEpisodes(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.l),
         child: ListView.builder(
           physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics(),
@@ -78,7 +77,7 @@ class _HomeScreenErrorView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text('Something went wrong.'),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.m),
           ElevatedButton(
             onPressed: () => context.read<HomeScreenCubit>().getEpisodes(),
             child: const Text('Retry'),
