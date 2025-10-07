@@ -8,19 +8,19 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   HomeScreenCubit({
     required this.episodesRepository,
   }) : super(
-          HomeScreenInitialState(),
+          const HomeScreenInitialState(),
         );
 
   Future<void> getEpisodes() async {
-    emit(HomeScreenLoadingState());
+    emit(const HomeScreenLoadingState());
 
     final response = await episodesRepository.getAllEpisodes();
 
     response.fold(
-      (l) => emit(HomeScreenErrorState()),
+      (l) => emit(const HomeScreenErrorState()),
       (r) => emit(r.episodes.isNotEmpty
           ? HomeScreenLoadedState(episodes: r.episodes)
-          : HomeScreenLoadedEmptyState()),
+          : const HomeScreenLoadedEmptyState()),
     );
   }
 }
