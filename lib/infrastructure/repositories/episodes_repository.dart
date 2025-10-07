@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:example_project/core/network/dio_exception_mapper.dart';
-import 'package:example_project/domain/models/episode_model.dart';
 import 'package:example_project/domain/models/episodes_model.dart';
 import 'package:example_project/domain/models/failure.dart';
 import 'package:example_project/domain/repositories/i_episodes_repository.dart';
 import 'package:logger/logger.dart';
 
+/// Data source responsible for retrieving episode data from the public API
 class EpisodesRepository
     with DioExceptionMapper
     implements IEpisodesRepository {
@@ -20,6 +20,7 @@ class EpisodesRepository
 
   final api = 'https://rickandmortyapi.com/api';
 
+  /// Fetches episodes from the API
   @override
   Future<Either<Failure, EpisodesModel>> getAllEpisodes() async {
     try {
@@ -43,34 +44,13 @@ class EpisodesRepository
     }
   }
 
-  @override
-  Future<Either<Failure, EpisodeModel>> getEpisode({required int id}) async {
-    try {
-      final response = await dio.get<Map<String, dynamic>>('$api/episode/$id');
-      final data = response.data;
-
-      if (data == null) {
-        logger.w('Empty response received from $api/episode/$id');
-        return Left(_emptyResponseFailure());
-      }
-
-      logger.i('Fetched episode with id $id');
-      return Right(EpisodeModel.fromJson(data));
-    } on DioException catch (e) {
-      logger.e('DioException when fetching episode $id', error: e);
-      return Left(mapDioException(e));
-    } catch (e, stackTrace) {
-      logger.e('Unexpected error when fetching episode $id',
-          error: e, stackTrace: stackTrace);
-      return Left(_unexpectedFailure(e));
-    }
-  }
-
+  /// Builds a failure representing an unhandled exception.
   Failure _unexpectedFailure(Object error) => Failure(
         message: error.toString(),
         type: FailureType.unexpected,
       );
 
+  /// Builds a failure describing an empty response from the API.
   Failure _emptyResponseFailure() => const Failure(
         message: 'Empty response',
         type: FailureType.emptyResponse,
