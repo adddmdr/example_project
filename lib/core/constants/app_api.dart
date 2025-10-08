@@ -1,3 +1,4 @@
+/// Defines API endpoints used by the data layer
 class AppApi {
   const AppApi._();
 

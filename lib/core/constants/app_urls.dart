@@ -1,3 +1,4 @@
+/// Collection of URLs
 class AppUrls {
   const AppUrls._();
 

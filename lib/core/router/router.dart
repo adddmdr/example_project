@@ -4,6 +4,7 @@ import 'package:example_project/presentation/home_screen/page/home_screen_page.d
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+/// App router defining navigation and nested routes
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
