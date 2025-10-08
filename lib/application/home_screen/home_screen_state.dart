@@ -9,11 +9,6 @@ sealed class HomeScreenState extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Initial idle state emitted before any data load kicks off.
-class HomeScreenInitialState extends HomeScreenState {
-  const HomeScreenInitialState();
-}
-
 /// State emitted while the episode list is being fetched.
 class HomeScreenLoadingState extends HomeScreenState {
   const HomeScreenLoadingState();
