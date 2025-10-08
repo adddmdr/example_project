@@ -3,6 +3,7 @@ import 'package:example_project/core/constants/app_urls.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 import 'package:example_project/presentation/home_screen/widgets/episode_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /// [EpisodeCard] - Represents a card used for a single episode
 class EpisodeCard extends StatelessWidget {
@@ -25,7 +26,10 @@ class EpisodeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
       ),
       child: InkWell(
-        onTap: () {}, // on tap to detail
+        onTap: () => context.push(
+          '/episode/${episode.id}',
+          extra: episode,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
