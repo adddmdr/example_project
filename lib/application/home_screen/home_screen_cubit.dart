@@ -10,12 +10,10 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   HomeScreenCubit({
     required this.episodesRepository,
   }) : super(
-          const HomeScreenInitialState(),
+          const HomeScreenLoadingState(),
         );
 
   Future<void> getEpisodes() async {
-    emit(const HomeScreenLoadingState());
-
     final response = await episodesRepository.getAllEpisodes();
 
     response.fold(

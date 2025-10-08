@@ -2,17 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 
 /// Base state for the home screen flow.
-/// Implements value equality, allowing the UI to rebuild only on meaningful changes.
 sealed class HomeScreenState extends Equatable {
   const HomeScreenState();
 
   @override
   List<Object?> get props => [];
-}
-
-/// Initial idle state emitted before any data load kicks off.
-class HomeScreenInitialState extends HomeScreenState {
-  const HomeScreenInitialState();
 }
 
 /// State emitted while the episode list is being fetched.

@@ -18,7 +18,6 @@ class HomeScreenContentView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
             builder: (context, state) => switch (state) {
-                  HomeScreenInitialState() => const SizedBox.shrink(),
                   HomeScreenLoadingState() => _HomeScreenLoadingView(),
                   HomeScreenLoadedState(episodes: final episodes) =>
                     _HomeScreenLoadedView(episodes: episodes),
@@ -50,17 +49,18 @@ class _HomeScreenLoadedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () => context.read<HomeScreenCubit>().getEpisodes(),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.l),
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
-          itemCount: episodes.length,
-          itemBuilder: (context, index) => EpisodeCard(
-            episode: episodes[index],
-            isLast: index == episodes.length - 1,
-          ),
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.l,
+          vertical: AppSpacing.l,
+        ),
+        separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.l),
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        itemCount: episodes.length,
+        itemBuilder: (context, index) => EpisodeCard(
+          episode: episodes[index],
         ),
       ),
     );
