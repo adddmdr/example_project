@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:example_project/core/constants/app_api.dart';
 import 'package:example_project/core/network/dio_exception_mapper.dart';
 import 'package:example_project/domain/models/episodes_model.dart';
 import 'package:example_project/domain/models/failure.dart';
@@ -18,17 +19,15 @@ class EpisodesRepository
     required this.logger,
   });
 
-  final api = 'https://rickandmortyapi.com/api';
-
   /// Fetches episodes from the API
   @override
   Future<Either<Failure, EpisodesModel>> getAllEpisodes() async {
     try {
-      final response = await dio.get<Map<String, dynamic>>('$api/episode');
+      final response = await dio.get<Map<String, dynamic>>(AppApi.episodes);
       final data = response.data;
 
       if (data == null) {
-        logger.w('Empty response received from $api/episode');
+        logger.w('Empty response received from ${AppApi.episodes}');
         return Left(_emptyResponseFailure());
       }
 

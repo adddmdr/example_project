@@ -1,4 +1,5 @@
 import 'package:example_project/core/constants/app_spacing.dart';
+import 'package:example_project/core/constants/app_urls.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 import 'package:example_project/presentation/home_screen/widgets/episode_image.dart';
 import 'package:flutter/material.dart';
@@ -61,5 +62,5 @@ class EpisodeCard extends StatelessWidget {
 }
 
 String _episodeArtworkUrl(int episodeId) {
-  return 'https://rickandmortyapi.com/api/character/avatar/$episodeId.jpeg';
+  return '${AppUrls.rickAndMortyCharacterAvatarBase}/$episodeId.jpeg';
 }

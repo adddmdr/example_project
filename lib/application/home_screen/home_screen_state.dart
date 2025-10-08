@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:example_project/domain/models/episode_model.dart';
 
 /// Base state for the home screen flow.
-/// Implements value equality, allowing the UI to rebuild only on meaningful changes.
 sealed class HomeScreenState extends Equatable {
   const HomeScreenState();
 

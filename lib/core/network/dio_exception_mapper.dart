@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:example_project/domain/models/failure.dart';
 
+/// Logic for converting Dio errors into domain failures
 mixin DioExceptionMapper {
   Failure mapDioException(DioException exception) {
     final statusCode = exception.response?.statusCode;
