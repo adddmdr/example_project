@@ -5,7 +5,7 @@ import 'package:example_project/presentation/home_screen/widgets/episode_image.d
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// [EpisodeCard] - Represents a card used for a single episode
+/// Visual card representing a single episode summary in the list
 class EpisodeCard extends StatelessWidget {
   final EpisodeModel episode;
 

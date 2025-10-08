@@ -7,6 +7,7 @@ import 'package:logger/logger.dart';
 
 GetIt getIt = GetIt.instance;
 
+/// Registers all dependencies with the service locator
 void registerDependencies() {
   getIt.registerFactory(
     () => HomeScreenCubit(

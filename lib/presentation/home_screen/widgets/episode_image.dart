@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Displays the episode hero image with loading and error fallbacks
 class EpisodeImage extends StatelessWidget {
   final String? imageUrl;
 

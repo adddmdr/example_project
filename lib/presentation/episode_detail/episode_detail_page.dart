@@ -1,6 +1,7 @@
 import 'package:example_project/domain/models/episode_model.dart';
 import 'package:flutter/material.dart';
 
+/// Detail screen of a specific epsiode
 class EpisodeDetailPage extends StatelessWidget {
   const EpisodeDetailPage({
     super.key,
